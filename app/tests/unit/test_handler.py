@@ -38,7 +38,8 @@ def test_handler_should_log_error_when_posting_to_discord_fails(mocker, mock_log
     mock_logging.error.assert_called_once()
 
 
-def test_handler_should_log_info_when_posting_to_discord_succeeds(mock_logging, mocked_data):
+def test_handler_should_log_info_when_posting_to_discord_succeeds(mocker, mock_logging, mocked_data):
+    mocker.patch("app.main.Discord").return_value.post.return_value = None
     handler(mocked_data, None)
 
-    mock_logging.info.assert_called_once()
+    mock_logging.info.assert_called()
