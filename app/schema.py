@@ -2,7 +2,7 @@ from pydantic import BaseModel, field_validator
 from enum import Enum
 import re
 
-from app.custom_logging import logger
+from .custom_logging import logger
 
 
 class Action(Enum):
